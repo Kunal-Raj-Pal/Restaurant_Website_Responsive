@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Edit menu</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="Bookseat" style="">
+  <form actoin="/edit/{{i.id}}" method="post" style="height: 500px; width: 500px; ">
+    {% csrf_token %}
+          <h1 class="mb-3">Edit Menu</h1>
+          <input type="text" name="item" value="{{items.item}}">
+         <center>
+          <button type="submit">Update</button>
+      </center>
+  </form>
+</div>
+</div>
+{% endblock %}

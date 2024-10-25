@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Menu</title>
+{% endblock %}
+
+{% block content %}
+<div class="menupage">
+<div class="container-fluid">
+    <div class="row" data-aos="fade">
+       <div class="col-6 menu-items mx-auto">
+           <h1 class="text-center">This is our menu!</h1>
+           <hr style="border: 1px solid black; opcity: 70%;">
+           <div class="row">
+            {% for i in item %}
+            <div class="col-6">
+                <ul>
+                    <li>{{i.item}}</li>
+                        {% comment %} {{i.id}} {% endcomment %}
+                </ul>
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="col-6">
+                <a href="edit/{{i.id}}" class="btn text-success mt-2">✏️</a>
+                <a href="delete/{{i.id}}" class="btn text-danger mt-2">🗑️</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+{% if request.user.is_authenticated %}
+<a href="{% url 'addmenu' %}"><button class="btn btn-light">Add Menu</button></a>
+{% endif %}
+</div>
+{% endblock %}

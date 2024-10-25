@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Document</title>
+    {% endblock %}
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/all.css" %}">
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> {% endcomment %}
+    <script src="{% static "js/bootstrap.js" %}"></script>
+</head>
+<body class='bg-dark text-light'>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">K-Foods</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto nav-list">
+              <li class="nav-item">
+                <a class="nav-link active"   href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"   href="{% url 'menu' %}">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"   href="{% url 'about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"   href="{% url 'bookseat' %}">Book seat</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"   href="{% url 'contact' %}">Contact us</a>
+              </li> 
+
+              
+              {% if request.user.is_authenticated %}
+              <a class="btn bg-light text-dark my-1"   href="">👤{{request.user.username}}</a>              
+              <a href="/logout/" class="btn bg-light text-dark my-1">Logout</a>
+              {% else %}
+              <a href="/login/" class="btn bg-light text-dark my-1">Login</a>
+              <a href="/register/" class="btn bg-light text-dark my-1">Register</a>
+              {% endif %}
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+{% block content %}
+<h1>this is showing feom base!</h1>
+{% endblock %}
+
+{% block footer %}
+    {% comment %} footer start {% endcomment %}
+
+<div class="footer">
+    <div class="address">
+        <h1>Address 🏠</h1>
+        <p>Near xyz Market, 000222</p>
+    </div>
+    <div class="contact">
+        <h1>Contact</h1>
+        <p>Ph: +916306228254</p>
+        <p><span>Email: </span>kunalrajpal03@gmail.com</p>
+    </div>
+    <div class="feedback">
+        <h3>If you have any feedback!</h3>
+        <a href="{% url 'contact' %}">Give Here!</a>
+    </div>
+</div>
+
+{% comment %} footer end {% endcomment %}
+
+    {% endblock %}
+
+    {% block developer %}
+    
+    <div class="dev">
+        <h4> &copy Copyright 2024 | Designed and Developed by <a href="https://www.linkedin.com/in/kunal-raj-pal" style="color: black;">Kunal Raj Pal</a></h4>
+    </div>
+
+    {% endblock %}
+
+<script src="{% static "js/bootstrap.js" %}"></script>
+
+{% comment %} aos animation {% endcomment %}
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({
+    offset: 150,
+    duration: 1000,
+    easing: 'linear'
+  });
+</script>
+</body>
+</html>

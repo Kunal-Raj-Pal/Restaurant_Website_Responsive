@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Book-Seat</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="Bookseat" style="">
+  <form style="" method="post" data-aos="fade">
+    {% csrf_token %}
+          <h1 class="mb-3 fw-bold">Book Your Seat!🪑</h1>
+          <label>Name</label>
+          <input type="text" placeholder="Enter your name" name="name">
+
+          <label style="margin-top: 15px;">Phone No.</label>
+          <input type="number" placeholder="Enter your phone" name="phone">
+
+          <label style="margin-top: 15px;">Email</label>
+          <input type="email"placeholder="Enter your email" name="email">
+
+          <label style="margin-top: 15px;">No. of People</label>
+          <input type="number"placeholder="Number of People" name="no.p">
+
+
+      {% if request.user.is_authenticated %}
+      <center>
+        <button type="submit">Book🍔</button>
+      </center>
+      {% else %}
+      <center>
+        <a href="{% url 'login' %}" class="btn btn-light" id="bookbtn">Book🍔</a>
+    </center>
+      {% endif %}
+
+  </form>
+</div>
+</div>
+{% endblock %}
